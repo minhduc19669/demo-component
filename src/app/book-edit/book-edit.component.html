@@ -26,7 +26,14 @@
           Author is invalid
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button
+        type="submit"
+        [disabled]="editBook.invalid"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      <button class="btn btn-block" routerLink=""></button>
     </form>
   </div>
 </div>
