@@ -1,23 +1,33 @@
-
-<h2 class="text-center">Login</h2>
-<form  class="col-md-6 offset-md-3">
-  <div class="form-group row">
-    <label class="col">
-      Email
-      <input type="email" class="form-control" formControlName="email">
-    </label>
-  </div>
-  <div class="form-group row">
-    <label class="col">
-      Password
-      <input type="password" class="form-control" formControlName="password">
-    </label>
-  </div>
-  <div class="form-group">
-    <button class="btn btn-info" type="submit">Submit</button>
+<form
+  class="col-md-6 offset-md-3"
+  [formGroup]="formLogin"
+  (ngSubmit)="onSubmit()"
+>
+  <h1>Login</h1>
+  <mat-form-field class="example-full-width">
+    <!--Emailll ------------------>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Ex.pat@example.com" />
+    <mat-error
+      *ngIf="formLogin.get('email').invalid && formLogin.get('email').touched"
+    >
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+  <!-- password ------------------------->
+  <mat-form-field style="margin-top: 10px;" class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password" />
+    <mat-error
+      *ngIf="
+        formLogin.get('password').invalid && formLogin.get('password').touched
+      "
+    >
+      Mật khẩu phải dài ít nhất 8 ký tự và phải chứa một số, một ký tự viết hoa
+      và một ký tự đặc biệt
+    </mat-error>
+  </mat-form-field>
+  <div>
+    <button style="margin-top: 20px;" class="btn btn-secondary">Submit</button>
   </div>
 </form>
-
-<pre>
-<!-- {{ loginForm.value | json}} -->
-</pre>

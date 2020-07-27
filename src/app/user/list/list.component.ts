@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from '../iuser';
+import {Router} from '@angular/router';
+import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-list-user',
@@ -29,7 +31,8 @@ export class ListComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private router:Router) {}
+
 
   ngOnInit(): void {
     this.user_search = this.users;
@@ -38,13 +41,13 @@ export class ListComponent implements OnInit {
   user_search = [];
 
   search(event: any) {
-    let key = event.target.value;
+    let key = event.toLowerCase();
     this.user_search = key ? this.userfilter(key) : this.users;
   }
 
   userfilter(keyword: string) {
     return this.users.filter(function (user) {
-      return user.name.indexOf(keyword) != -1;
+      return user.name.toLowerCase().indexOf(keyword) != -1;
     });
   }
 }

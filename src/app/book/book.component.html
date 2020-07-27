@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header">
+    <div class="col-md-8"></div>
+    <button class="btn btn-secondary" routerLink="book/add">
+      Create
+    </button>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of listBook; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>
+            <button
+              class="btn btn-primary"
+              [routerLink]="['book', book.id, 'edit']"
+            >
+              Edit
+            </button>
+            <button class="btn btn-danger ml-2" (click)="delete(book.id)">
+              Delete
+            </button>
+            <button
+              class="btn btn-secondary ml-2"
+              [routerLink]="['book', book.id, 'detail']"
+            >
+              Detail
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

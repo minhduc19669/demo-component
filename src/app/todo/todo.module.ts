@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TodoComponent } from './todo/todo.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [TodoComponent],
   imports: [
     CommonModule
   ]
